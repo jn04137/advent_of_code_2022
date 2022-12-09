@@ -48,6 +48,20 @@ func Quicksort(list []int, low int, high int) {
 	}
 }
 
+func BubbleSort(list []int) []int {
+	for i := 0; i < len(list)-1; i++ {
+		for j := i + 1; j < len(list)-1; j++ {
+			if list[i] > list[j] {
+				var temp = list[i]
+				list[i] = list[j]
+				list[j] = temp
+			}
+		}
+	}
+
+	return list
+}
+
 func main() {
 	//fmt.Printf("This is the maxval: %d", maxval)
 	inputString := GetDataFromFile()
@@ -72,7 +86,7 @@ func main() {
 
 	// high := len(highestelves) - 1
 
-	Quicksort(highestelves, 0, 256)
+	var sortedlist []int = BubbleSort(highestelves)
 
-	fmt.Printf("This is the most calories: %v", highestelves)
+	fmt.Printf("This is the most calories: %v", sortedlist)
 }
