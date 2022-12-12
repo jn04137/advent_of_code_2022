@@ -50,15 +50,14 @@ func Quicksort(list []int, low int, high int) {
 
 func BubbleSort(list []int) []int {
 	for i := 0; i < len(list)-1; i++ {
-		for j := i + 1; j < len(list)-1; j++ {
-			if list[i] > list[j] {
-				var temp = list[i]
+		for j := i + 1; j < len(list); j++ {
+			if list[i] < list[j] {
+				temp := list[i]
 				list[i] = list[j]
 				list[j] = temp
 			}
 		}
 	}
-
 	return list
 }
 
@@ -87,6 +86,7 @@ func main() {
 	// high := len(highestelves) - 1
 
 	var sortedlist []int = BubbleSort(highestelves)
+	var sumofthreehigh = sortedlist[0] + sortedlist[1] + sortedlist[2]
 
-	fmt.Printf("This is the most calories: %v", sortedlist)
+	fmt.Printf("This is the most calories: %v", sumofthreehigh)
 }
