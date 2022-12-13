@@ -39,6 +39,23 @@ func CheckForTwo(stringinput string, mapvals map[string]int) int {
 	return 0
 }
 
+func CheckForThree(
+	s1 string, 
+	s2 string, 
+	s3 string, 
+	mapvals map[string]int) int {
+	for i := 0; i < len(s1); i++{
+		for j := 0; j < len(s2); j++ {
+			for k := 0; k < len(s3); k++ {
+				if s1[i] == s2[j] && s1[i] == s[k] {
+					return mapvals[string(s1[i])]
+				}
+			}
+		}
+	}
+	return 0
+}
+
 func main() {
 	input := LoadData("input.txt")
 	byline := strings.Split(input, "\n")
