@@ -1,21 +1,11 @@
-package main
+package day3
 
 import (
 	"fmt"
-	"log"
-	"os"
 	"strings"
 )
 
-func LoadData(path string) string {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return string(data)
-}
-
+// Loads the scores for each alpha-val
 func LoadMap(mymap map[string]int) map[string]int {
 	letters := "abcdefghijklmnopqrstuvwxyz"
 	for i := range letters {
@@ -47,7 +37,7 @@ func CheckForThree(
 	for i := 0; i < len(s1); i++{
 		for j := 0; j < len(s2); j++ {
 			for k := 0; k < len(s3); k++ {
-				if s1[i] == s2[j] && s1[i] == s[k] {
+				if s1[i] == s2[j] && s1[i] == s3[k] {
 					return mapvals[string(s1[i])]
 				}
 			}
@@ -56,19 +46,18 @@ func CheckForThree(
 	return 0
 }
 
-func main() {
-	input := LoadData("input.txt")
+func Solution(input string) {
 	byline := strings.Split(input, "\n")
 
 	valuemap := make(map[string]int)
 	loadedmap := LoadMap(valuemap)
 
-	//var match string = ""
 	var sum int = 0
-	// For every input line
-	for z := 0; z < len(byline); z++ { 
-		// For every element in first half of string
-			sum = sum + CheckForTwo(byline[z], loadedmap)
+	for z := 0; z < len(byline)-1; z = z + 3 { 
+		sum = sum + CheckForThree(byline[z], 
+		byline[z+1], 
+		byline[z+2],
+		loadedmap)
 	}
 
 	fmt.Printf("Sum: %d", sum)
