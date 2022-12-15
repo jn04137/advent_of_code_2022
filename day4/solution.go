@@ -21,9 +21,13 @@ func Solution(input string){
       list[j] = num
     }
 
-    if list[0] >= list[2] && list[1] <= list[3] {
+    if list[0] >= list[2] && list[0] <= list[3] {
       sum = sum + 1
-    } else if list[0] <= list[2] && list[1] >= list[3] {
+    } else if list[1] >= list[2] && list[1] <= list[3] {
+      sum = sum + 1 
+    } else if list[2] >= list[0] && list[2] <= list[1] {
+      sum = sum + 1
+    } else if list[3] >= list[0] && list[3] <= list[1] {
       sum = sum + 1
     }
   }
